@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <title>Using Java Script</title>
+ </head>
+<body>
+
+<h2>Author entry Kartikeya</h2>
+
+<form>
+    <label for="password_assign">The hidden author name</label>
+    <input type ="password" id="password_assign" value="Dickens" min=10 max=50 step=2 value=30>
+
+    <label for="Author_name">Guess the author</label>
+    <input type ="text" id="Author_name" autofocus>
+
+    <input type="button" onclick="checkAuthor()" value="Check the guess">
+
+</form>
+<p id="results">The result will be displayed</p>
+<script>
+
+var good =0;
+var oops =0;
+function checkAuthor(){
+    console.log("Getting form values")
+    password_assign = document.getElementById("password_assign").value;
+    Author_name = document.getElementById("Author_name").value;
+    
+    
+    if(password_assign === Author_name){
+        good++;
+        alert("You got it right");
+    } 
+    else {
+        oops++;
+        alert("Sorry");
+    }
+    results = document.getElementById("results");
+    results.innerHTML =`right: ${good}, wrong: ${oops}`;
+}
+</script>
+
+</body>
+</html> 
