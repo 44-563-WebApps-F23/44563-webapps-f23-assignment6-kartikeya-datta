@@ -38,11 +38,30 @@ function checkAuthor(){
     }
     results = document.getElementById("results");
     results.innerHTML =`right: ${good}, wrong: ${oops}`;
-    <div>
-        <img style="height:100px; width:100px" src="images/atlanta.jpg" alt="Image of Atlanta">
-    </div>
 }
+</script>
+<div>
+    <img id="cityImage" style="height: 100px; width: 100px;" src="images/atlanta.jpg" alt="Image of Atlanta" onclick="selectImage()">
+</div>
+<script>
+    var useImage = 1;
+    function selectImage() {
+        var image = document.getElementById("cityImage");
+        switch (useImage) {
+            case 1:
+                image.src = "images/dallas.jpg";
+                useImage = 2;
+                break;
+            case 2:
+                image.src = "images/tokyo.webp";
+                useImage = 3;
+                break;
+            default:
+                image.src  = "images/atlanta.jpg";
+                useImage = 1;
+        }
+    }
 </script>
 
 </body>
-</html> 
+</html>
