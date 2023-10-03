@@ -6,25 +6,58 @@
 <body>
 
 <h2>Kartikeya shows tip amounts</h2>
-
-<div class="container">
-    <input type="number" id="baseamount" value="50">
+<form>
     <label for="baseamount">Enter base amount:</label>
-    <input type="number" id="tip_percent" value="15">
+    <input type="number" id="baseamount" value="50"><br>
     <label for="tip_percent">Enter the tip percent:</label>
-    <input type="button" value="Show tip" onclick="tips()">
+    <input type="number" id="tip_percent" value="15">
+    <input type="button" onclick="tips()" value="Show tip">
     <p id="result1"> Tips Result will be displayed here.</p>
-</div>
-function Tips(){
-    let baseamount = parseFloat(document.getElementById("baseamount").value);
+</form>
+
+<script>
+function tips(){
+    let base_amount = parseFloat(document.getElementById("baseamount").value);
     let tip_percent = parseFloat(document.getElementById("tip_percent").value);
     let myOutput = "";
     for(var i=0; i<5; i++){
         var tipamount = (baseamount * (tip_percent + i * 4)) / 100;
-        myOutput = myOutput + (tip_percent + i * 4) + "% is calculated $" + tipamount + ";    ";
+        myOutput = myOutput + (tip_percent + i * 4) + "% is " + tipamount + ";    ";
     }
     document.getElementById("result1").innerHTML = "Tips are:" + myOutput;
 }
+</script>
+
+<h4>Create a radio button group that switches between calculations</h4>
+<form>
+    <label for="sum">sum</label>
+    <input type="radio" id="sum" onclick="chooseOp()" name="arithmetic_operation" value="sum" ><br>
+    <label for="difference">diff</label>
+    <input type="radio" id="difference" onclick="chooseOp()" name="arithmetic_operation" value="difference"><br>
+    <label for="product">mult</label>
+    <input type="radio" id="product" onclick="chooseOp()" name="arithmetic_operation" value="product" ><br> 
+    <p id="result2">Arithmetic operations will be displayed here.</p>
+</form>
+<script>
+    function chooseOp(){
+        let base_amount = parseFloat(document.getElementById("baseamount").value);
+        let tip_percent = parseFloat(document.getElementById("tip_percent").value);
+        let operation = document.querySelector('input[name="arithmetic_operation"]:checked').value; 
+        let output;
+        switch (operation){
+            case "sum":
+                output = base_amount + tip_percent;
+                break;
+            case "difference":
+                output = base_amount - tip_percent;
+                break;
+            case "product":
+                output = base_amount * tip_percent;
+                break;
+            }
+        document.getElementById("result2").innerHTML = `${operation} of ${base_amount} and ${tip_percent} is ${output}`;
+    }
+</script>
 <hr>
 <form>
     <label for="form_age">What is your age </label>
