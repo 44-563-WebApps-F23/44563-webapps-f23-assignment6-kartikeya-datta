@@ -19,16 +19,16 @@
 <form>
     <div class="form-group">
     <label for="password_assign">The hidden author name</label>
-    <input type ="password" id="password_assign" value="Dickens" min=10 max=50 step=2 value=30>
+    <input type ="password" id="password_assign" value="Dickens" min=10 max=50 step=2 value=30><br><br>
     </div>
     <div class="form-group">
     <label for="Author_name">Guess the author</label>
-    <input type ="text" id="Author_name" autofocus>
+    <input type ="text" id="Author_name" autofocus><br><br>
     </div>
     <input type="button" onclick="checkAuthor()" value="Check the guess">
 
 </form>
-<p class="text-center" id="results">The result will be displayed</p>
+<p class="text-center border border-dark rounded border-2" id="results">The result will be displayed</p>
 <script>
 
 var good =0;
