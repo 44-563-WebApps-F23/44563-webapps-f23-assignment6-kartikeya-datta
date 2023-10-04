@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <title>Using Check boxes</title>
+ </head>
+<body>
+
+<h2>Kartikeya goes on a cruise</h2>
+<form>
+    <input type="checkbox" id="SharesCabin" name="Shares_Cabin" value="True">
+    <label for="SharesCabin">Shares Cabin</label><br>
+  
+    <input type="checkbox" id="Breakfast" name="Breakfast" value="True">
+    <label for="Breakfast">Breakfast</label><br>
+  
+    <input type="checkbox" id="PoolPass" name="Pool Pass"value="false" >
+    <label for="PoolPass">Pool Pass</label><br>
+    <button type="button" onclick="selectCruise()">Select a cruise</button>
+</form>
+<p id="cruise_Selected_Elements">output will be displayed here.</p>
+
+<br>
+<form>
+    <label for="days">Enter the number of days</label>
+    <input type="text" id="days" name="days" value="days"><br><br>
+    
+    <label for="price">Enter price</label>
+    <input type="text" id="price" name="price" value="price"><br><br>
+    <button type="button" onclick="updateCruise()">Update the cruise</button>
+</form>
+<p id="cruise_Selected_value">output will be displayed here.</p>
+
+<script>
+    var my_cruise = {};
+    function selectCruise() {
+    my_cruise={};
+    my_cruise.shared = document.getElementById("SharesCabin").checked;
+    my_cruise.breakfast = document.getElementById("Breakfast").checked;
+    my_cruise.pool = document.getElementById("PoolPass").checked;
+    document.getElementById("cruise_Selected_Elements").innerHTML = JSON.stringify(my_cruise);
+}
+
+function updateCruise() {
+    const days = document.getElementById('days').value;
+    const price = document.getElementById('price').value;
+
+    my_cruise["days"] = days;
+    my_cruise["price"] = price;
+
+    document.getElementById("cruise_Selected_value").innerHTML = JSON.stringify(my_cruise);
+}
+</script>
+<form>
+    <label for="form1_age">What is your age </label>
+    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+
+    <label for="form1_nick">What is your nickname </label>
+    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
+
+    <input type="button" onclick="resolveForm()" value="Get values from form">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+
+function resolveForm (){
+    console.log("Getting form values")
+    age = document.getElementById("form1_age").value
+    nick = document.getElementById("form1_nick").value
+    confirmed = confirm("Are these the values? "+age+" and "+nick)
+    
+    out = document.getElementById("result")
+    if(confirmed){
+        out.innerHTML = "Values were confirmed"
+    } else {
+        out.innerHTML = "Values were not confirmed"
+    }
+}
+</script>
+
+</body>
+</html> 
