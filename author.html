@@ -25,7 +25,7 @@
     <label for="Author_name">Guess the author</label>
     <input type ="text" id="Author_name" autofocus><br><br>
     </div>
-    <input type="button" onclick="checkAuthor()" value="Check the guess">
+    <input type="button" id="button" onclick="checkAuthor()" value="Check the guess">
 
 </form>
 <p class="text-center border border-dark rounded border-2" id="results">The result will be displayed</p>
@@ -38,17 +38,21 @@ function checkAuthor(){
     password_assign = document.getElementById("password_assign").value;
     Author_name = document.getElementById("Author_name").value;
     
-    
-    if(password_assign === Author_name){
+    if(oops==7){
+      alert("Sorry, ran out of guesses.");
+      document.getElementById("results").innerHTML="Sorry, ran out of guesses";
+      document.getElementById("button").style.visibility = 'hidden'; 
+    }
+    else if(password_assign === Author_name){
         good++;
         alert("You got it right");
+        results = document.getElementById("results").innerHTML =`right: ${good}, wrong: ${oops}`;
     } 
     else {
         oops++;
         alert("Sorry");
+        results = document.getElementById("results").innerHTML =`right: ${good}, wrong: ${oops}`;
     }
-    results = document.getElementById("results");
-    results.innerHTML =`right: ${good}, wrong: ${oops}`;
 }
 </script>
 <div class="text-center">
